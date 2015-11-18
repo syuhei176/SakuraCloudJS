@@ -1,22 +1,24 @@
 var SakuraCloud = require('../');
 
 var sakuraCloud = new SakuraCloud({
-	  accessToken        : 'dd308de3-717e-4d2f-b1fa-797a8616595e',
-	  accessTokenSecret  : 'oV6mr7McyWDXS1P49dZZXY6eOp9Pbh9kMTgRKd5FLnzKjLNJbRKQczd3e1V1jYOx',
+	zone : 'is1a',
+	accessToken        : process.env.SAKURA_TOKEN,
+	accessTokenSecret  : process.env.SAKURA_SECRET
 });
 
 var server = sakuraCloud.server('aaa');
 server.create(function(err, result) {
-	console.log('create', err, result);
+	console.log('create', err);
 	server.createInterface(function(err) {
 		server.sharedInterface(function(err) {
 			server.powerOn(function(err) {
-				console.log('power on')
-				setTimeout(function() {
+				console.log('power on', err);
+				server.powerOff(function(err, result) {
+					console.log('power off', err);
 					server.terminate(function(err, result) {
 						console.log(err, result);
 					});
-				}, 20 * 1000)
+				});
 			});
 		});
 	});
