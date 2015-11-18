@@ -1,0 +1,18 @@
+{
+  "name": "SakuraCloudJS",
+  "description": "Wrapper library for Sakura Cloud.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Shuhei Hiya"
+  },
+  "scripts": {
+  },
+  "engines": {
+    "node": ">=0.12.*"
+  },
+  "dependencies": {
+    "sacloud": "^0.0.16"
+  },
+  "devDependencies": {
+  }
+}
